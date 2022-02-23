@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AgeCheck from "./ageCheck";
-import AlkoCounter from "./alkoCounter";
+import AlkoCounter from "./AlkoCounter";
 import Layout from "./Layout";
 import Under18 from "./under18";
 

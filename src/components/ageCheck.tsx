@@ -11,7 +11,7 @@ function AgeCheck() {
             <h2>Över 18+</h2>
           </Link>
           <Link style={linkStyle} to={"./under18"}>
-            <h2>Under 18+</h2>
+            <h2>Under 18-</h2>
           </Link>
         </div>
       </div>
