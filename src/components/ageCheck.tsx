@@ -7,10 +7,10 @@ function AgeCheck() {
       <div style={ageCheckStyle}>
         <h1>Hur gammal är du?</h1>
         <div style={ageButtonsContainer}>
-          <Link style={linkStyle} to={"alkoCounter"}>
+          <Link style={linkStyle} to={"./alkoCounter"}>
             <h2>Över 18+</h2>
           </Link>
-          <Link style={linkStyle} to={"/"}>
+          <Link style={linkStyle} to={"./under18"}>
             <h2>Under 18+</h2>
           </Link>
         </div>
