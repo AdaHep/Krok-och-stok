@@ -28,6 +28,7 @@ function AgeWeightForm() {
   return (
     <div style={formStyle}>
       <form style={formStyle} onSubmit={HandleSubmit}>
+        <h2 style={formTextStyle}>Ange din vikt för att komma igång!</h2>
         <input
           style={inputStyle}
           onChange={handleWeightInputChange}
@@ -52,7 +53,15 @@ const formStyle: CSSProperties = {
   height: "30rem",
   width: "30rem",
   backgroundColor: "#eae",
-  borderRadius: "15rem",
+  borderRadius: "8rem",
+};
+
+const formTextStyle: CSSProperties = {
+  color: "black",
+  fontSize: "2rem",
+  textAlign: "center",
+  margin: 0,
+  padding: 0,
 };
 
 const inputStyle: CSSProperties = {
