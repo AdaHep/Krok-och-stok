@@ -1,32 +1,55 @@
 import React from "react";
 import { CSSProperties } from "react";
 
-interface Props {}
-interface State {
-  lättöl33cl: number;
-  folköl33cl: number;
-  folköl50cl: number;
-  starköl33cl: number;
-  starköl50cl: number;
-  glasvin12cl: number;
-  flaskavin75cl: number;
-  sprit4cl: number;
+interface Props {
+  alkoholLista: [{}];
 }
+
+// interface State {
+//   // lättöl33cl: number;
+//   //  folköl33cl: number;
+//   //  folköl50cl: number;
+//   //  starköl33cl: number;
+//   //  starköl50cl: number;
+//   //  glasvin12cl: number;
+//   //  flaskavin75cl: number;
+//   //  sprit4cl: number;
+// }
 
 class Counter extends React.Component {
   constructor(props: Props) {
     super(props);
     this.state = {
-      lättöl33cl: "",
-      folköl33cl: "",
-      folköl50cl: "",
-      starköl33cl: "",
-      starköl50cl: "",
-      glasvin12cl: "",
-      flaskavin75cl: "",
-      sprit4cl: "",
+      AlkoList: [{}],
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.render();
+  }
+
+  handleInputChange(event: { target: any }) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    // this.setState({
+    //   AlkoList: {AlkoList..., Mängd: { name: value } },
+    // });
+    let alkoArray;
+
+    alkoArray = { types: [{ öl50cl: value, öl33cl: value }] };
+    console.log(alkoArray);
+  }
+
+  handleSubmit(event: { target: any }) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value,
+    });
+    // event.preventDefault();
   }
 
   public render() {
@@ -37,43 +60,79 @@ class Counter extends React.Component {
           <form>
             <label style={formStyle}>
               <div style={optionContainer}>
-                <h3 style={drinkLabelStyle}>Lättöl</h3>
-
-                <select>
-                  <option value="33clStarköl">33cl</option>
-                  <option value="50clStarköl">50cl</option>
-                </select>
-
-                <input placeholder="Antal" type="number" />
+                <h3 style={drinkLabelStyle}>Lättöl 2,8% 33cl</h3>
+                <input
+                  name="lättÖl33cl"
+                  placeholder="Antal"
+                  type="number"
+                  onChange={this.setState(öl50cl: 10)
+                />
               </div>
               <div style={optionContainer}>
-                <h3 style={drinkLabelStyle}> Folköl </h3>
-                <select>
-                  <option value="33cl">33cl</option>
-                  <option value="50cl">50cl</option>
-                </select>
-
-                <input placeholder="Antal" type="number" />
+                <h3 style={drinkLabelStyle}>Lättöl 2,8% 50cl</h3>
+                <input
+                  name="lättÖl50cl"
+                  placeholder="Antal"
+                  type="number"
+                  onChange={this.handleInputChange}
+                />
               </div>
               <div style={optionContainer}>
-                <h3 style={drinkLabelStyle}>Starköl</h3>
-                <select>
-                  <option value="33cl">33cl</option>
-                  <option value="50cl">50cl</option>
-                </select>
-
-                <input placeholder="Antal" type="number" />
+                <h3 style={drinkLabelStyle}>Folköl 3,5% 33cl</h3>
+                <input
+                  name="folkÖl33cl"
+                  placeholder="Antal"
+                  type="number"
+                  onChange={this.handleInputChange}
+                />
+              </div>
+              <div style={optionContainer}>
+                <h3 style={drinkLabelStyle}>Folköl 3,5% 50cl</h3>
+                <input
+                  name="folkÖl50cl"
+                  placeholder="Antal"
+                  type="number"
+                  onChange={this.handleInputChange}
+                />
+              </div>
+              <div style={optionContainer}>
+                <h3 style={drinkLabelStyle}>Starköl 5.5% 33cl</h3>
+                <input
+                  name="starkÖl33cl"
+                  placeholder="Antal"
+                  type="number"
+                  onChange={this.handleInputChange}
+                />
+              </div>
+              <div style={optionContainer}>
+                <h3 style={drinkLabelStyle}>Starköl 5.5% 50cl</h3>
+                <input
+                  name="starköl50cl"
+                  placeholder="Antal"
+                  type="number"
+                  onChange={this.handleInputChange}
+                />
               </div>
               <div style={optionContainer}>
                 <h3 style={drinkLabelStyle}>Ett glas vin 12cl</h3>
-                <input placeholder="Antal" type="number" />
+                <input
+                  name="glasvin12cl"
+                  placeholder="Antal"
+                  type="number"
+                  onChange={this.handleInputChange}
+                />
               </div>
               <div style={optionContainer}>
                 <h3 style={drinkLabelStyle}>Stark sprit 4cl </h3>
-                <input placeholder="Antal" type="number" />
+                <input
+                  name="sprit4cl"
+                  placeholder="Antal"
+                  type="number"
+                  onChange={this.handleInputChange}
+                />
               </div>
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" onClick={this.handleSubmit} />
           </form>
         </div>
       </div>
@@ -93,14 +152,14 @@ const containerStyle: CSSProperties = {
   color: "black",
   alignItems: "center",
   justifyContent: "space-evenly",
-  fontSize: "1.8rem",
+  fontSize: "1.2rem",
   textAlign: "center",
 };
 
 const formContainerStyle: CSSProperties = {
   display: "flex",
   justifyContent: "center",
-  fontSize: "1.8rem",
+  fontSize: "1rem",
 };
 
 const drinkLabelStyle: CSSProperties = {
