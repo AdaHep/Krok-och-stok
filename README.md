@@ -1,6 +1,6 @@
-# Fyllekollen
+# Krök och Stök
 
-React app for checking how drunk you are the morning after!
+React app for buying alcohol online!
 
 <br>
 

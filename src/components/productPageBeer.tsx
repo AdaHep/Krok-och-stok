@@ -1,4 +1,6 @@
+import { setUncaughtExceptionCaptureCallback } from "process";
 import { CSSProperties, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ProductPageBeer() {
   const [beer1Count, setBeer1Count] = useState(0);
@@ -7,15 +9,24 @@ function ProductPageBeer() {
   const [beer4Count, setBeer4Count] = useState(0);
   const [beer5Count, setBeer5Count] = useState(0);
   const [beer6Count, setBeer6Count] = useState(0);
+  const [shoppingCart, setTotalBeerCount] = useState(0);
 
   return (
     <div style={productContainer}>
-      <h2>Välj berusninsgmedel</h2>
+      <h2>ÖL</h2>
+      <div style={menuButtons}>
+        <Link style={LinkStyle} to="/productPageSprit">
+          SPRIT
+        </Link>
+        <Link style={LinkStyle} to="/productPageWine">
+          VIN
+        </Link>
+      </div>
       <div style={productCardContainer}>
         <div style={productCard}>
           <p style={productHeadline}>Arboga 10.2%</p>
           <div style={picturePlaceholder}>Picture Placeholder</div>
-          <p>Pris: 20 kronor</p>
+          <p>Pris: 15 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setBeer1Count(beer1Count - 1)}>-</button>
             <p>{beer1Count}</p>
@@ -25,7 +36,7 @@ function ProductPageBeer() {
         <div style={productCard}>
           <p style={productHeadline}>Ey Bro 7.5%</p>
           <div style={picturePlaceholder}>Picture Placeholder</div>
-          <p>Pris: 20 kronor</p>
+          <p>Pris: 10 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setBeer2Count(beer2Count - 1)}>-</button>
             <p>{beer2Count}</p>
@@ -35,7 +46,7 @@ function ProductPageBeer() {
         <div style={productCard}>
           <p style={productHeadline}>Falcon 5.3%</p>
           <div style={picturePlaceholder}>Picture Placeholder</div>
-          <p>Pris: 20 kronor</p>
+          <p>Pris: 1 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setBeer3Count(beer3Count - 1)}>-</button>
             <p>{beer3Count}</p>
@@ -45,7 +56,7 @@ function ProductPageBeer() {
         <div style={productCard}>
           <p style={productHeadline}>Mariestad 5.2%</p>
           <div style={picturePlaceholder}>Picture Placeholder</div>
-          <p>Pris: 20 kronor</p>
+          <p>Pris: 8 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setBeer4Count(beer4Count - 1)}>-</button>
             <p>{beer4Count}</p>
@@ -55,7 +66,7 @@ function ProductPageBeer() {
         <div style={productCard}>
           <p style={productHeadline}>Pistonhead 5.2%</p>
           <div style={picturePlaceholder}>Picture Placeholder</div>
-          <p>Pris: 20 kronor</p>
+          <p>Pris: 22 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setBeer5Count(beer5Count - 1)}>-</button>
             <p>{beer5Count}</p>
@@ -65,7 +76,7 @@ function ProductPageBeer() {
         <div style={productCard}>
           <p style={productHeadline}>Carlsberg 4.3%</p>
           <div style={picturePlaceholder}>Picture Placeholder</div>
-          <p>Pris: 20 kronor</p>
+          <p>Pris: 11 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setBeer6Count(beer6Count - 1)}>-</button>
             <p>{beer5Count}</p>
@@ -73,7 +84,16 @@ function ProductPageBeer() {
           </div>
         </div>
       </div>
-      <button>Lägg till i kundkorg</button>
+      <button
+        onClick={() =>
+          setTotalBeerCount(
+            shoppingCart + beer1Count + (shoppingCart + beer2Count)
+          )
+        }
+      >
+        Lägg till i kundkorg
+      </button>
+      <p>{shoppingCart}</p>
     </div>
   );
 }
@@ -83,7 +103,6 @@ export default ProductPageBeer;
 const productContainer: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  height: "50rem",
   width: "50rem",
   backgroundColor: "#eae",
   borderRadius: "5rem",
@@ -106,6 +125,12 @@ const productCardContainer: CSSProperties = {
   gridTemplateColumns: "repeat(3, 1fr)",
 };
 
+const menuButtons: CSSProperties = {
+  display: "flex",
+  justifyContent: "space-between",
+  width: "15rem",
+};
+
 const productCard: CSSProperties = {};
 
 const productButtons: CSSProperties = {
@@ -117,4 +142,15 @@ const picturePlaceholder: CSSProperties = {
   backgroundColor: "black",
   height: "8rem",
   width: "8rem",
+};
+const LinkStyle: CSSProperties = {
+  display: "flex",
+  textDecoration: "none",
+  height: "3rem",
+  width: "6rem",
+  background: "blue",
+  borderRadius: "8rem",
+  color: "white",
+  justifyContent: "center",
+  alignItems: "center",
 };
