@@ -1,4 +1,5 @@
 import { CSSProperties, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ProductPageBeer() {
   const [beer1Count, setBeer1Count] = useState(0);
@@ -68,14 +69,21 @@ function ProductPageBeer() {
           <p>Pris: 20 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setBeer6Count(beer6Count - 1)}>-</button>
-            <p>{beer5Count}</p>
+            <p>{beer6Count}</p>
             <button onClick={() => setBeer6Count(beer6Count + 1)}>+</button>
           </div>
         </div>
       </div>
-      <button>Lägg till i kundkorg</button>
+        <Link style={linkStyle} to={"./Checkout"}>
+          <button onClick={() => moveProducts()}>Lägg till i kundkorg</button>
+        </Link>
+
     </div>
   );
+}
+
+function moveProducts(){
+  return null;
 }
 
 export default ProductPageBeer;
@@ -117,4 +125,11 @@ const picturePlaceholder: CSSProperties = {
   backgroundColor: "black",
   height: "8rem",
   width: "8rem",
+};
+
+const linkStyle: CSSProperties = {
+  textDecoration: "none",
+  padding: "1rem",
+  display: "block",
+  color: "darkgreen",
 };
