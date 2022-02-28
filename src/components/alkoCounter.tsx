@@ -1,11 +1,10 @@
-import AgeWeightForm from "./AgeWeightForm";
-import Counter from "./Counter";
+import ProductPageBeer from "./productPageBeer";
 
 function AlkoCounter() {
   return (
     <div>
       {/* <AgeWeightForm /> */}
-      <Counter />
+      <ProductPageBeer />
     </div>
   );
 }
