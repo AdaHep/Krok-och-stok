@@ -1,8 +1,8 @@
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
-import röttVin from "../images/wantedzin.png";
-import bubbel from "../images/bubble.png";
-import vitVin from "../images/vitvin.png";
+import röttVin from "../images/röttvin.png";
+import bubbel from "../images/bubbel.png";
+import vittVin from "../images/vittvin.png";
 
 function ProductPageWine() {
   const [wine1Count, setWine1Count] = useState(0);
@@ -16,8 +16,8 @@ function ProductPageWine() {
         <Link style={LinkStyle} to="/productPageSprit">
           SPRIT
         </Link>
-        <Link style={LinkStyle} to="/productPageWine">
-          VIN
+        <Link style={LinkStyle} to="/productPageBeer">
+          ÖL
         </Link>
       </div>
       <div style={productCardContainer}>
@@ -28,21 +28,41 @@ function ProductPageWine() {
           </div>
           <p>Pris: 20 kronor</p>
           <div style={productButtons}>
-            <button onClick={() => setWine1Count(wine1Count - 1)}>-</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setWine1Count(wine1Count - 1)}
+            >
+              -
+            </button>
             <p>{wine1Count}</p>
-            <button onClick={() => setWine1Count(wine1Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setWine1Count(wine1Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
         <div style={productCard}>
           <p style={productHeadline}>Vitt</p>
           <div style={picturePlaceholder}>
-            <img style={productImage} src={vitVin} alt="" />
+            <img style={productImage} src={vittVin} alt="" />
           </div>
           <p>Pris: 20 kronor</p>
           <div style={productButtons}>
-            <button onClick={() => setWine2Count(wine2Count - 1)}>-</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setWine2Count(wine2Count - 1)}
+            >
+              -
+            </button>
             <p>{wine2Count}</p>
-            <button onClick={() => setWine2Count(wine2Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setWine2Count(wine2Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
         <div style={productCard}>
@@ -52,9 +72,17 @@ function ProductPageWine() {
           </div>
           <p>Pris: 20 kronor</p>
           <div style={productButtons}>
-            <button onClick={() => setWine3Count(wine3Count - 1)}>-</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setWine3Count(wine3Count - 1)}
+            ></button>
             <p>{wine3Count}</p>
-            <button onClick={() => setWine3Count(wine3Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setWine3Count(wine3Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
       </div>
@@ -97,7 +125,11 @@ const menuButtons: CSSProperties = {
 };
 
 const productCard: CSSProperties = {
-  padding: "2rem",
+  border: "1px solid black",
+  margin: "1rem",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
 };
 
 const productButtons: CSSProperties = {
@@ -108,6 +140,12 @@ const productButtons: CSSProperties = {
 const picturePlaceholder: CSSProperties = {
   height: "8rem",
   width: "8rem",
+};
+
+const productImage: CSSProperties = {
+  width: "8rem",
+  height: "8rem",
+  objectFit: "contain",
 };
 
 const LinkStyle: CSSProperties = {
@@ -122,7 +160,9 @@ const LinkStyle: CSSProperties = {
   alignItems: "center",
 };
 
-const productImage: CSSProperties = {
-  width: "8rem",
-  height: "8rem",
+const addRemoveButton: CSSProperties = {
+  width: "3rem",
+  margin: "1rem",
+  border: "none",
+  borderRadius: "1rem",
 };
