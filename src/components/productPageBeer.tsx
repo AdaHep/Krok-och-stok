@@ -1,6 +1,12 @@
 import { setUncaughtExceptionCaptureCallback } from "process";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
+import arboga from "../images/arboga.png";
+import eybro from "../images/eybro.png";
+import falcon from "../images/falcon.png";
+import mariestad from "../images/mariestad.png";
+import pistonhead from "../images/pistonhead.png";
+import carlsberg from "../images/carlsberg.png";
 
 function ProductPageBeer() {
   const [beer1Count, setBeer1Count] = useState(0);
@@ -25,62 +31,134 @@ function ProductPageBeer() {
       <div style={productCardContainer}>
         <div style={productCard}>
           <p style={productHeadline}>Arboga 10.2%</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={arboga} alt="" />
+          </div>
           <p>Pris: 15 kronor</p>
           <div style={productButtons}>
-            <button onClick={() => setBeer1Count(beer1Count - 1)}>-</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer1Count(beer1Count - 1)}
+            >
+              -
+            </button>
             <p>{beer1Count}</p>
-            <button onClick={() => setBeer1Count(beer1Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer1Count(beer1Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
         <div style={productCard}>
-          <p style={productHeadline}>Ey Bro 7.5%</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
+          <p style={productHeadline}>Ey Bro 5%</p>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={eybro} alt="" />
+          </div>
           <p>Pris: 10 kronor</p>
           <div style={productButtons}>
-            <button onClick={() => setBeer2Count(beer2Count - 1)}>-</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer2Count(beer2Count - 1)}
+            >
+              -
+            </button>
             <p>{beer2Count}</p>
-            <button onClick={() => setBeer2Count(beer2Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer2Count(beer2Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
         <div style={productCard}>
-          <p style={productHeadline}>Falcon 5.3%</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
+          <p style={productHeadline}>Falcon 5.2%</p>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={falcon} alt="" />
+          </div>
           <p>Pris: 1 kronor</p>
           <div style={productButtons}>
-            <button onClick={() => setBeer3Count(beer3Count - 1)}>-</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer3Count(beer3Count - 1)}
+            >
+              -
+            </button>
             <p>{beer3Count}</p>
-            <button onClick={() => setBeer3Count(beer3Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer3Count(beer3Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
         <div style={productCard}>
-          <p style={productHeadline}>Mariestad 5.2%</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
-          <p>Pris: 8 kronor</p>
+          <p style={productHeadline}>Mariestad 5.3%</p>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={mariestad} alt="" />
+          </div>
+          <p> 8:- st</p>
           <div style={productButtons}>
-            <button onClick={() => setBeer4Count(beer4Count - 1)}>-</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer4Count(beer4Count - 1)}
+            >
+              -
+            </button>
             <p>{beer4Count}</p>
-            <button onClick={() => setBeer4Count(beer4Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer4Count(beer4Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
         <div style={productCard}>
-          <p style={productHeadline}>Pistonhead 5.2%</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
+          <p style={productHeadline}>Pistonhead 4.9%</p>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={pistonhead} alt="" />
+          </div>
           <p>Pris: 22 kronor</p>
           <div style={productButtons}>
-            <button onClick={() => setBeer5Count(beer5Count - 1)}>-</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer5Count(beer5Count - 1)}
+            >
+              -
+            </button>
             <p>{beer5Count}</p>
-            <button onClick={() => setBeer5Count(beer5Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer5Count(beer5Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
         <div style={productCard}>
-          <p style={productHeadline}>Carlsberg 4.3%</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
+          <p style={productHeadline}>Carlsberg 5%</p>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={carlsberg} alt="" />
+          </div>
           <p>Pris: 11 kronor</p>
           <div style={productButtons}>
-            <button onClick={() => setBeer6Count(beer6Count - 1)}>-</button>
-            <p>{beer5Count}</p>
-            <button onClick={() => setBeer6Count(beer6Count + 1)}>+</button>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer6Count(beer6Count - 1)}
+            >
+              -
+            </button>
+            <p>{beer6Count}</p>
+            <button
+              style={addRemoveButton}
+              onClick={() => setBeer6Count(beer6Count + 1)}
+            >
+              +
+            </button>
           </div>
         </div>
       </div>
@@ -93,7 +171,6 @@ function ProductPageBeer() {
       >
         Lägg till i kundkorg
       </button>
-      <p>{shoppingCart}</p>
     </div>
   );
 }
@@ -131,15 +208,33 @@ const menuButtons: CSSProperties = {
   width: "15rem",
 };
 
-const productCard: CSSProperties = {};
+const productCard: CSSProperties = {
+  border: "1px solid black",
+  margin: "1rem",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
+
+const productImage: CSSProperties = {
+  width: "8rem",
+  height: "8rem",
+  objectFit: "contain",
+};
 
 const productButtons: CSSProperties = {
   display: "flex",
   justifyContent: "center",
 };
 
+const addRemoveButton: CSSProperties = {
+  width: "3rem",
+  margin: "1rem",
+  border: "none",
+  borderRadius: "1rem",
+};
+
 const picturePlaceholder: CSSProperties = {
-  backgroundColor: "black",
   height: "8rem",
   width: "8rem",
 };

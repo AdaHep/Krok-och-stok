@@ -1,5 +1,8 @@
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
+import röttVin from "../images/wantedzin.png";
+import bubbel from "../images/bubble.png";
+import vitVin from "../images/vitvin.png";
 
 function ProductPageWine() {
   const [wine1Count, setWine1Count] = useState(0);
@@ -20,7 +23,9 @@ function ProductPageWine() {
       <div style={productCardContainer}>
         <div style={productCard}>
           <p style={productHeadline}>Rött</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={röttVin} alt="" />
+          </div>
           <p>Pris: 20 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setWine1Count(wine1Count - 1)}>-</button>
@@ -30,7 +35,9 @@ function ProductPageWine() {
         </div>
         <div style={productCard}>
           <p style={productHeadline}>Vitt</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={vitVin} alt="" />
+          </div>
           <p>Pris: 20 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setWine2Count(wine2Count - 1)}>-</button>
@@ -40,7 +47,9 @@ function ProductPageWine() {
         </div>
         <div style={productCard}>
           <p style={productHeadline}>Bubbel</p>
-          <div style={picturePlaceholder}>Picture Placeholder</div>
+          <div style={picturePlaceholder}>
+            <img style={productImage} src={bubbel} alt="" />
+          </div>
           <p>Pris: 20 kronor</p>
           <div style={productButtons}>
             <button onClick={() => setWine3Count(wine3Count - 1)}>-</button>
@@ -77,10 +86,8 @@ const productHeadline: CSSProperties = {
 };
 
 const productCardContainer: CSSProperties = {
-  display: "grid",
+  display: "flex",
   boxSizing: "border-box",
-  flexDirection: "row",
-  gridTemplateColumns: "repeat(3, 1fr)",
 };
 
 const menuButtons: CSSProperties = {
@@ -90,8 +97,7 @@ const menuButtons: CSSProperties = {
 };
 
 const productCard: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
+  padding: "2rem",
 };
 
 const productButtons: CSSProperties = {
@@ -100,7 +106,6 @@ const productButtons: CSSProperties = {
 };
 
 const picturePlaceholder: CSSProperties = {
-  backgroundColor: "black",
   height: "8rem",
   width: "8rem",
 };
@@ -115,4 +120,9 @@ const LinkStyle: CSSProperties = {
   color: "white",
   justifyContent: "center",
   alignItems: "center",
+};
+
+const productImage: CSSProperties = {
+  width: "8rem",
+  height: "8rem",
 };
