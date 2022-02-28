@@ -1,16 +1,12 @@
-import AgeWeightForm from "./AgeWeightForm";
+import ProductPageBeer from "./productPageBeer";
 
 function AlkoCounter() {
   return (
     <div>
-      <AgeWeightForm />
+      {/* <AgeWeightForm /> */}
+      <ProductPageBeer />
     </div>
   );
 }
 
 export default AlkoCounter;
-
-// starköl %% 33cl = 13.2g alkohol
-// glas vin 13.5% 15cl = 16.2g alkohol
-// sprit 40% 4cl = 12.8g alkokol
-// uträkning, 0.1 gram per kilo kroppsvikt och timme.  genomsnittligt
