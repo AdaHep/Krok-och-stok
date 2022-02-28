@@ -1,6 +1,6 @@
 import ProductPageBeer from "./productPageBeer";
 
-function AlkoCounter() {
+function Shop() {
   return (
     <div>
       {/* <AgeWeightForm /> */}
@@ -9,4 +9,4 @@ function AlkoCounter() {
   );
 }
 
-export default AlkoCounter;
+export default Shop;
