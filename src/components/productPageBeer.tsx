@@ -1,7 +1,6 @@
-import { setUncaughtExceptionCaptureCallback } from "process";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
-import { mockedProducts, Product, ShoppingCartItem } from "../data";
+import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
 
 function ProductPageBeer() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
@@ -40,7 +39,7 @@ function ProductPageBeer() {
       </div>
 
       <div style={productCardContainer}>
-        {mockedProducts.map((p, index) => (
+        {mockedProductsBeer.map((p, index) => (
           <div key={index} style={productCard}>
             <p style={productHeadline}>{p.title}</p>
             <div style={picturePlaceholder}>
