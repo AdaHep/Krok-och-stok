@@ -2,11 +2,10 @@ import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
 
-function ProductPageBeer() {
+export function ProductPageBeer() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
 
   function addToCart(product: Product) {
-    /////// Gör en ifsats som kollar om vi har en produkt i korgen, om det finns (öka count). Annars ska den lägga till.
     const isItemInCart = shoppingCart.find(
       (item) => item.title === product.title
     );
@@ -59,15 +58,14 @@ function ProductPageBeer() {
           </div>
         ))}
       </div>
-        <Link style={linkStyle} to={"./Checkout"}>
-          <button onClick={() => moveProducts()}>Lägg till i kundkorg</button>
-        </Link>
-
+      <Link style={LinkStyle} to={"./Checkout"}>
+        <button onClick={() => moveProducts()}>Lägg till i kundkorg</button>
+      </Link>
     </div>
   );
 }
 
-function moveProducts(){
+function moveProducts() {
   return null;
 }
 
