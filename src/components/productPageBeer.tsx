@@ -3,12 +3,24 @@ import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import { mockedProducts, Product, ShoppingCartItem } from "../data";
 
+
 function ProductPageBeer() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
 
   /////// Gör en ifsats som kollar om vi har en produkt i korgen, om det finns (öka count). Annars ska den lägga till.
   function addToCart(product: Product) {
-    const shoppingCart = shoppingCart.find((item) => item.title === p.title);
+    
+/*     const shoppingCart = prev.find((item) => item.title === p.title);
+
+    if (shoppingCart) {
+      return prev.map(item =>
+        item.id === p.title
+          ? { ...item, amount: item.amount + 1 }
+          : item
+      );
+    }
+
+    return [...shoppingCart, { ...p, amount: 1 }]; */
   }
 
   function removeFromCart(product: Product) {}
@@ -48,15 +60,11 @@ function ProductPageBeer() {
           </div>
         ))}
       </div>
-      <button
-        onClick={() =>
-          setTotalBeerCount(
-            shoppingCart + beer1Count + (shoppingCart + beer2Count)
-          )
-        }
-      >
+      <Link style={LinkStyle} to="/Cart">
+      <button>
         Lägg till i kundkorg
       </button>
+      </Link>
     </div>
   );
 }

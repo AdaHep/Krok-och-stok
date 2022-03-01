@@ -1,9 +1,9 @@
-import arboga from "../images/arboga.png";
-import eybro from "../images/eybro.png";
-import falcon from "../images/falcon.png";
-import mariestad from "../images/mariestad.png";
-import pistonhead from "../images/pistonhead.png";
-import carlsberg from "../images/carlsberg.png";
+import arboga from "./images/arboga.png";
+import eybro from "./images/eybro.png";
+import falcon from "./images/falcon.png";
+import mariestad from "./images/mariestad.png";
+import pistonhead from "./images/pistonhead.png";
+import carlsberg from "./images/carlsberg.png";
 
 export interface Product {
   title: string;
