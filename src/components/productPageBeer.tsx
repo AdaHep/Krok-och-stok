@@ -59,9 +59,16 @@ function ProductPageBeer() {
           </div>
         ))}
       </div>
-      <button>Lägg till i kundkorg</button>
+        <Link style={linkStyle} to={"./Checkout"}>
+          <button onClick={() => moveProducts()}>Lägg till i kundkorg</button>
+        </Link>
+
     </div>
   );
+}
+
+function moveProducts(){
+  return null;
 }
 
 export default ProductPageBeer;
@@ -127,6 +134,7 @@ const picturePlaceholder: CSSProperties = {
   height: "8rem",
   width: "8rem",
 };
+
 const LinkStyle: CSSProperties = {
   display: "flex",
   textDecoration: "none",
