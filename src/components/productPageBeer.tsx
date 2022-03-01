@@ -51,7 +51,7 @@ function ProductPageBeer() {
               <button style={addRemoveButton} onClick={() => removeFromCart(p)}>
                 -
               </button>
-              <p>{shoppingCart.find(shop) || 0}</p>
+              <p>{p.count}</p>
 
               <button style={addRemoveButton} onClick={() => addToCart(p)}>
                 +
