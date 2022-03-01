@@ -1,8 +1,8 @@
-import { CSSProperties, useState } from "react";
+import { useState, CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
+import { mockedProductsWine, Product, ShoppingCartItem } from "../data";
 
-function ProductPageBeer() {
+function ProductPageWine() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
 
   function addToCart(product: Product) {
@@ -28,18 +28,18 @@ function ProductPageBeer() {
 
   return (
     <div style={productContainer}>
-      <h2>ÖL</h2>
+      <h2>Vin</h2>
       <div style={menuButtons}>
         <Link style={LinkStyle} to="/productPageSprit">
           SPRIT
         </Link>
-        <Link style={LinkStyle} to="/productPageWine">
-          VIN
+        <Link style={LinkStyle} to="/productPageBeer">
+          ÖL
         </Link>
       </div>
 
       <div style={productCardContainer}>
-        {mockedProductsBeer.map((p, index) => (
+        {mockedProductsWine.map((p, index) => (
           <div key={index} style={productCard}>
             <p style={productHeadline}>{p.title}</p>
             <div style={picturePlaceholder}>
@@ -59,19 +59,12 @@ function ProductPageBeer() {
           </div>
         ))}
       </div>
-        <Link style={linkStyle} to={"./Checkout"}>
-          <button onClick={() => moveProducts()}>Lägg till i kundkorg</button>
-        </Link>
-
+      <button>Lägg till i kundkorg</button>
     </div>
   );
 }
 
-function moveProducts(){
-  return null;
-}
-
-export default ProductPageBeer;
+export default ProductPageWine;
 
 const productContainer: CSSProperties = {
   display: "flex",
@@ -134,7 +127,6 @@ const picturePlaceholder: CSSProperties = {
   height: "8rem",
   width: "8rem",
 };
-
 const LinkStyle: CSSProperties = {
   display: "flex",
   textDecoration: "none",
