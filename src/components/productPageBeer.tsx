@@ -6,12 +6,27 @@ import { mockedProducts, Product, ShoppingCartItem } from "../data";
 function ProductPageBeer() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
 
-  /////// Gör en ifsats som kollar om vi har en produkt i korgen, om det finns (öka count). Annars ska den lägga till.
   function addToCart(product: Product) {
-    const shoppingCart = shoppingCart.find((item) => item.title === p.title);
+    /////// Gör en ifsats som kollar om vi har en produkt i korgen, om det finns (öka count). Annars ska den lägga till.
+    const isItemInCart = shoppingCart.find(
+      (item) => item.title === product.title
+    );
+
+    if (isItemInCart) {
+      product.count += 1;
+      console.log(shoppingCart);
+    } else {
+      product.count += 1;
+      shoppingCart.push(product);
+    }
   }
 
-  function removeFromCart(product: Product) {}
+  function removeFromCart(product: Product) {
+    product.count -= 1;
+    shoppingCart.push();
+    console.log(shoppingCart);
+  }
+
   return (
     <div style={productContainer}>
       <h2>ÖL</h2>
@@ -25,38 +40,27 @@ function ProductPageBeer() {
       </div>
 
       <div style={productCardContainer}>
-        {mockedProducts.map((p) => (
-          <div style={productCard}>
+        {mockedProducts.map((p, index) => (
+          <div key={index} style={productCard}>
             <p style={productHeadline}>{p.title}</p>
             <div style={picturePlaceholder}>
               <img style={productImage} src={p.image} alt="" />
             </div>
             <p>Pris: {p.price}:- st</p>
             <div style={productButtons}>
-              <button
-                style={addRemoveButton}
-                onClick={() => addToCart(p)}
-              ></button>
-              <p>
-                {shoppingCart.find((item) => item.title === p.title)?.count ||
-                  0}
-              </p>
               <button style={addRemoveButton} onClick={() => removeFromCart(p)}>
+                -
+              </button>
+              <p>{shoppingCart.find(shop) || 0}</p>
+
+              <button style={addRemoveButton} onClick={() => addToCart(p)}>
                 +
               </button>
             </div>
           </div>
         ))}
       </div>
-      <button
-        onClick={() =>
-          setTotalBeerCount(
-            shoppingCart + beer1Count + (shoppingCart + beer2Count)
-          )
-        }
-      >
-        Lägg till i kundkorg
-      </button>
+      <button>Lägg till i kundkorg</button>
     </div>
   );
 }
@@ -67,7 +71,7 @@ const productContainer: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   width: "50rem",
-  backgroundColor: "#eae",
+  backgroundColor: "#e6ffff",
   borderRadius: "5rem",
   color: "black",
   alignItems: "center",
