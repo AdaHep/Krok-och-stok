@@ -15,25 +15,34 @@ function Cart() {
     <div style={productContainer}>
       <h2>Cart</h2>
 
-      {shoppingCart.length === 0 ? <p>No items in cart.</p> : null}
+      {mockedProductsBeer.length === 0 ? <p>No items in cart.</p> : null}
 
       <div style={productCardContainer}>
-        {shoppingCart.map((p) => (
+        {mockedProductsBeer.map((p) => (
           <div style={productCard}>
-            <p style={productHeadline}>{p.title}</p>
             <div style={picturePlaceholder}>
+              <p style={productHeadline}>{p.title}</p>
               <img style={productImage} src={p.image} alt="" />
+              <p style={productCartPrice}>{p.price}:- st</p>
             </div>
-            <p>Pris: {p.price}:- st</p>
-            <div style={productButtons}>
-              <p>
-                {shoppingCart.find((item) => item.title === p.title)?.count ||
-                  0}
+            <div style={priceAndCount}>
+              <p style={productCartCount}>
+                Antal:
+                {mockedProductsBeer.find((item) => item.title === p.title)
+                  ?.count || 0}
               </p>
+              <p style={productCartCount}>Totalt {p.count * p.price}:-</p>
             </div>
+            <div style={productButtons}></div>
           </div>
         ))}
       </div>
+      <h3>
+        {mockedProductsBeer.map((p) => (
+          <h3>totalt {p.count * p.price}</h3>
+        ))}
+      </h3>
+      <button>Betala</button>
     </div>
   );
 }
@@ -44,7 +53,7 @@ const productContainer: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   width: "50rem",
-  backgroundColor: "#eae",
+  backgroundColor: "#e6ffff",
   borderRadius: "5rem",
   color: "black",
   alignItems: "center",
@@ -54,34 +63,27 @@ const productContainer: CSSProperties = {
 };
 
 const productHeadline: CSSProperties = {
-  fontSize: "1.2rem",
+  fontSize: ".8rem",
   fontWeight: "bold",
 };
 
 const productCardContainer: CSSProperties = {
   display: "grid",
   boxSizing: "border-box",
-  flexDirection: "row",
-  gridTemplateColumns: "repeat(3, 1fr)",
-};
-
-const menuButtons: CSSProperties = {
-  display: "flex",
-  justifyContent: "space-between",
-  width: "15rem",
+  flexDirection: "column",
+  gridTemplateColumns: "repeat(1, 1fr)",
 };
 
 const productCard: CSSProperties = {
-  border: "1px solid black",
-  margin: "1rem",
+  borderBottom: "1px solid black",
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "row",
   alignItems: "center",
 };
 
 const productImage: CSSProperties = {
   width: "8rem",
-  height: "8rem",
+  height: "3rem",
   objectFit: "contain",
 };
 
@@ -90,25 +92,18 @@ const productButtons: CSSProperties = {
   justifyContent: "center",
 };
 
-const addRemoveButton: CSSProperties = {
-  width: "3rem",
-  margin: "1rem",
-  border: "none",
-  borderRadius: "1rem",
+const priceAndCount: CSSProperties = {};
+
+const productCartPrice: CSSProperties = {
+  fontSize: ".8rem",
+  margin: 0,
+};
+
+const productCartCount: CSSProperties = {
+  fontSize: ".8rem",
+  margin: 0,
 };
 
 const picturePlaceholder: CSSProperties = {
-  height: "8rem",
   width: "8rem",
-};
-const LinkStyle: CSSProperties = {
-  display: "flex",
-  textDecoration: "none",
-  height: "3rem",
-  width: "6rem",
-  background: "blue",
-  borderRadius: "8rem",
-  color: "white",
-  justifyContent: "center",
-  alignItems: "center",
 };
