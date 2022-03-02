@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
 
 export function ProductPageBeer() {
-
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
-
   function addToCart(product: Product) {
     const isItemInCart = shoppingCart.find(
       (item) => item.title === product.title
@@ -59,7 +57,7 @@ export function ProductPageBeer() {
           </div>
         ))}
       </div>
-      <Link style={LinkStyle} to={"./Checkout"}>
+      <Link style={LinkStyle} to={"/Cart"}>
         <button onClick={() => moveProducts()}>Lägg till i kundkorg</button>
       </Link>
     </div>

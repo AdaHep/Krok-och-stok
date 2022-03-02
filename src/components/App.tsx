@@ -5,7 +5,6 @@ function App() {
   return (
     <div>
       <Shop />
-      {/* <Cart /> */}
     </div>
   );
 }
