@@ -12,7 +12,10 @@ function Shop() {
       <Routes>
         <Route path="/" element={<AgeCheck />}></Route>
         <Route path="productPageBeer" element={<ProductPageBeer />}></Route>
-        <Route path="productPageSprit" element={<ProductPageSpirits />}></Route>
+        <Route
+          path="productPageSpirits"
+          element={<ProductPageSpirits />}
+        ></Route>
         <Route path="productPageWine" element={<ProductPageWine />}></Route>
         <Route path="Cart" element={<Cart />}></Route>
         <Route path="under18" element={<Under18 />}></Route>

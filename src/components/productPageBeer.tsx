@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
 
 export function ProductPageBeer() {
+
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
 
   function addToCart(product: Product) {
