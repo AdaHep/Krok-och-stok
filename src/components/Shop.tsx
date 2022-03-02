@@ -6,6 +6,7 @@ import ProductPageSpirits from "./productPageSpirits";
 import ProductPageWine from "./productPageWine";
 import Under18 from "./under18";
 import Checkout from "./Checkout";
+import Purchase from "./Purchase";
 
 function Shop() {
   return (
@@ -21,6 +22,7 @@ function Shop() {
         <Route path="Cart" element={<Cart />}></Route>
         <Route path="under18" element={<Under18 />}></Route>
         <Route path="Checkout" element={<Checkout />}></Route>
+        <Route path="Purchase" element={<Purchase />}></Route>
       </Routes>
     </BrowserRouter>
   );
