@@ -1,29 +1,31 @@
-import { setUncaughtExceptionCaptureCallback } from "process";
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
-import { mockedProducts, Product, ShoppingCartItem } from "../data";
+import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
 
+export function ProductPageBeer() {
 
-function ProductPageBeer() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
 
-  /////// Gör en ifsats som kollar om vi har en produkt i korgen, om det finns (öka count). Annars ska den lägga till.
   function addToCart(product: Product) {
-    
-/*     const shoppingCart = prev.find((item) => item.title === p.title);
+    const isItemInCart = shoppingCart.find(
+      (item) => item.title === product.title
+    );
 
-    if (shoppingCart) {
-      return prev.map(item =>
-        item.id === p.title
-          ? { ...item, amount: item.amount + 1 }
-          : item
-      );
+    if (isItemInCart) {
+      product.count += 1;
+      console.log(shoppingCart);
+    } else {
+      product.count += 1;
+      shoppingCart.push(product);
     }
-
-    return [...shoppingCart, { ...p, amount: 1 }]; */
   }
 
-  function removeFromCart(product: Product) {}
+  function removeFromCart(product: Product) {
+    product.count -= 1;
+    shoppingCart.push();
+    console.log(shoppingCart);
+  }
+
   return (
     <div style={productContainer}>
       <h2>ÖL</h2>
@@ -37,36 +39,35 @@ function ProductPageBeer() {
       </div>
 
       <div style={productCardContainer}>
-        {mockedProducts.map((p) => (
-          <div style={productCard}>
+        {mockedProductsBeer.map((p, index) => (
+          <div key={index} style={productCard}>
             <p style={productHeadline}>{p.title}</p>
             <div style={picturePlaceholder}>
               <img style={productImage} src={p.image} alt="" />
             </div>
             <p>Pris: {p.price}:- st</p>
             <div style={productButtons}>
-              <button
-                style={addRemoveButton}
-                onClick={() => addToCart(p)}
-              ></button>
-              <p>
-                {shoppingCart.find((item) => item.title === p.title)?.count ||
-                  0}
-              </p>
               <button style={addRemoveButton} onClick={() => removeFromCart(p)}>
+                -
+              </button>
+              <p>{p.count}</p>
+
+              <button style={addRemoveButton} onClick={() => addToCart(p)}>
                 +
               </button>
             </div>
           </div>
         ))}
       </div>
-      <Link style={LinkStyle} to="/Cart">
-      <button>
-        Lägg till i kundkorg
-      </button>
+      <Link style={LinkStyle} to={"./Checkout"}>
+        <button onClick={() => moveProducts()}>Lägg till i kundkorg</button>
       </Link>
     </div>
   );
+}
+
+function moveProducts() {
+  return null;
 }
 
 export default ProductPageBeer;
@@ -75,7 +76,7 @@ const productContainer: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   width: "50rem",
-  backgroundColor: "#eae",
+  backgroundColor: "#e6ffff",
   borderRadius: "5rem",
   color: "black",
   alignItems: "center",
@@ -132,6 +133,7 @@ const picturePlaceholder: CSSProperties = {
   height: "8rem",
   width: "8rem",
 };
+
 const LinkStyle: CSSProperties = {
   display: "flex",
   textDecoration: "none",

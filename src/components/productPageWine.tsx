@@ -1,13 +1,30 @@
-import { CSSProperties, useState } from "react";
+import { useState, CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import röttVin from "../images/röttvin.png";
-import bubbel from "../images/bubbel.png";
-import vittVin from "../images/vittvin.png";
+import { mockedProductsWine, Product, ShoppingCartItem } from "../data";
 
 function ProductPageWine() {
-  const [wine1Count, setWine1Count] = useState(0);
-  const [wine2Count, setWine2Count] = useState(0);
-  const [wine3Count, setWine3Count] = useState(0);
+  const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
+
+  function addToCart(product: Product) {
+    /////// Gör en ifsats som kollar om vi har en produkt i korgen, om det finns (öka count). Annars ska den lägga till.
+    const isItemInCart = shoppingCart.find(
+      (item) => item.title === product.title
+    );
+
+    if (isItemInCart) {
+      product.count += 1;
+      console.log(shoppingCart);
+    } else {
+      product.count += 1;
+      shoppingCart.push(product);
+    }
+  }
+
+  function removeFromCart(product: Product) {
+    product.count -= 1;
+    shoppingCart.push();
+    console.log(shoppingCart);
+  }
 
   return (
     <div style={productContainer}>
@@ -20,73 +37,28 @@ function ProductPageWine() {
           ÖL
         </Link>
       </div>
-      <div style={productCardContainer}>
-        <div style={productCard}>
-          <p style={productHeadline}>Rött</p>
-          <div style={picturePlaceholder}>
-            <img style={productImage} src={röttVin} alt="" />
-          </div>
-          <p>Pris: 20 kronor</p>
-          <div style={productButtons}>
-            <button
-              style={addRemoveButton}
-              onClick={() => setWine1Count(wine1Count - 1)}
-            >
-              -
-            </button>
-            <p>{wine1Count}</p>
-            <button
-              style={addRemoveButton}
-              onClick={() => setWine1Count(wine1Count + 1)}
-            >
-              +
-            </button>
-          </div>
-        </div>
-        <div style={productCard}>
-          <p style={productHeadline}>Vitt</p>
-          <div style={picturePlaceholder}>
-            <img style={productImage} src={vittVin} alt="" />
-          </div>
-          <p>Pris: 20 kronor</p>
-          <div style={productButtons}>
-            <button
-              style={addRemoveButton}
-              onClick={() => setWine2Count(wine2Count - 1)}
-            >
-              -
-            </button>
-            <p>{wine2Count}</p>
-            <button
-              style={addRemoveButton}
-              onClick={() => setWine2Count(wine2Count + 1)}
-            >
-              +
-            </button>
-          </div>
-        </div>
-        <div style={productCard}>
-          <p style={productHeadline}>Bubbel</p>
-          <div style={picturePlaceholder}>
-            <img style={productImage} src={bubbel} alt="" />
-          </div>
-          <p>Pris: 20 kronor</p>
-          <div style={productButtons}>
-            <button
-              style={addRemoveButton}
-              onClick={() => setWine3Count(wine3Count - 1)}
-            ></button>
-            <p>{wine3Count}</p>
-            <button
-              style={addRemoveButton}
-              onClick={() => setWine3Count(wine3Count + 1)}
-            >
-              +
-            </button>
-          </div>
-        </div>
-      </div>
 
+      <div style={productCardContainer}>
+        {mockedProductsWine.map((p, index) => (
+          <div key={index} style={productCard}>
+            <p style={productHeadline}>{p.title}</p>
+            <div style={picturePlaceholder}>
+              <img style={productImage} src={p.image} alt="" />
+            </div>
+            <p>Pris: {p.price}:- st</p>
+            <div style={productButtons}>
+              <button style={addRemoveButton} onClick={() => removeFromCart(p)}>
+                -
+              </button>
+              <p>{p.count}</p>
+
+              <button style={addRemoveButton} onClick={() => addToCart(p)}>
+                +
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
       <button>Lägg till i kundkorg</button>
     </div>
   );
@@ -97,9 +69,8 @@ export default ProductPageWine;
 const productContainer: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  height: "50rem",
   width: "50rem",
-  backgroundColor: "#eae",
+  backgroundColor: "#e6ffff",
   borderRadius: "5rem",
   color: "black",
   alignItems: "center",
@@ -114,8 +85,10 @@ const productHeadline: CSSProperties = {
 };
 
 const productCardContainer: CSSProperties = {
-  display: "flex",
+  display: "grid",
   boxSizing: "border-box",
+  flexDirection: "row",
+  gridTemplateColumns: "repeat(3, 1fr)",
 };
 
 const menuButtons: CSSProperties = {
@@ -132,32 +105,15 @@ const productCard: CSSProperties = {
   alignItems: "center",
 };
 
-const productButtons: CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-};
-
-const picturePlaceholder: CSSProperties = {
-  height: "8rem",
-  width: "8rem",
-};
-
 const productImage: CSSProperties = {
   width: "8rem",
   height: "8rem",
   objectFit: "contain",
 };
 
-const LinkStyle: CSSProperties = {
-  textDecoration: "none",
+const productButtons: CSSProperties = {
   display: "flex",
-  height: "3rem",
-  width: "6rem",
-  background: "blue",
-  borderRadius: "8rem",
-  color: "white",
   justifyContent: "center",
-  alignItems: "center",
 };
 
 const addRemoveButton: CSSProperties = {
@@ -165,4 +121,20 @@ const addRemoveButton: CSSProperties = {
   margin: "1rem",
   border: "none",
   borderRadius: "1rem",
+};
+
+const picturePlaceholder: CSSProperties = {
+  height: "8rem",
+  width: "8rem",
+};
+const LinkStyle: CSSProperties = {
+  display: "flex",
+  textDecoration: "none",
+  height: "3rem",
+  width: "6rem",
+  background: "blue",
+  borderRadius: "8rem",
+  color: "white",
+  justifyContent: "center",
+  alignItems: "center",
 };
