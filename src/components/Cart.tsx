@@ -1,19 +1,13 @@
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  mockedProductsBeer,
-  mockedProductsWine,
-  mockedProductsSpirits,
-  Product,
-  ShoppingCartItem,
-} from "../data";
+import { mockedProductsBeer, ShoppingCartItem } from "../data";
+import BeerCount from "./BeerCount";
 
 function Cart() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
-
   return (
     <div style={productContainer}>
-      <h2>Cart</h2>
+      <h2>Kundvagn</h2>
 
       {mockedProductsBeer.length === 0 ? <p>No items in cart.</p> : null}
 
@@ -37,12 +31,8 @@ function Cart() {
           </div>
         ))}
       </div>
-      <h3>
-        {mockedProductsBeer.map((p) => (
-          <h3>totalt {p.count * p.price}</h3>
-        ))}
-      </h3>
-      <button>Betala</button>
+      <h3>Totalt 514:- </h3>
+      <button style={payButton}>Betala</button>
     </div>
   );
 }
@@ -106,4 +96,8 @@ const productCartCount: CSSProperties = {
 
 const picturePlaceholder: CSSProperties = {
   width: "8rem",
+};
+
+const payButton: CSSProperties = {
+  marginBottom: "1rem ",
 };
