@@ -32,7 +32,9 @@ function Cart() {
         ))}
       </div>
       <h3>Totalt 514:- </h3>
+      <Link style={LinkStyle} to={"/Checkout"}>
       <button style={payButton}>Betala</button>
+      </Link>
     </div>
   );
 }
@@ -101,3 +103,16 @@ const picturePlaceholder: CSSProperties = {
 const payButton: CSSProperties = {
   marginBottom: "1rem ",
 };
+
+const LinkStyle: CSSProperties = {
+  display: "flex",
+  textDecoration: "none",
+  height: "3rem",
+  width: "6rem",
+  background: "blue",
+  borderRadius: "8rem",
+  color: "white",
+  justifyContent: "center",
+  alignItems: "center",
+};
+
