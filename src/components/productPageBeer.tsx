@@ -28,7 +28,7 @@ export function ProductPageBeer() {
     <div style={productContainer}>
       <h2>ÖL</h2>
       <div style={menuButtons}>
-        <Link style={LinkStyle} to="/productPageSprit">
+        <Link style={LinkStyle} to="/productPageSpirits">
           SPRIT
         </Link>
         <Link style={LinkStyle} to="/productPageWine">

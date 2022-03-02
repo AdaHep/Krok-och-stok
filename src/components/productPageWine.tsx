@@ -30,7 +30,7 @@ function ProductPageWine() {
     <div style={productContainer}>
       <h2>Vin</h2>
       <div style={menuButtons}>
-        <Link style={LinkStyle} to="/productPageSprit">
+        <Link style={LinkStyle} to="/productPageSpirits">
           SPRIT
         </Link>
         <Link style={LinkStyle} to="/productPageBeer">
