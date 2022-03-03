@@ -58,6 +58,9 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
         <Link style={LinkStyle} to="/productPageWine">
           VIN
         </Link>
+        <Link style={LinkStyle} to="/Api">
+          IDIOTER
+        </Link>
       </div>
 
       <div style={productCardContainer}>
@@ -155,12 +158,13 @@ const picturePlaceholder: CSSProperties = {
 const LinkStyle: CSSProperties = {
   display: "flex",
   textDecoration: "none",
-  height: "3rem",
+  height: "2rem",
   width: "10rem",
   background: "blue",
   borderRadius: "8rem",
   padding: "0.5rem",
-  margin: "1rem",
+  marginLeft: "1rem",
+  marginBottom: ".5rem",
   color: "white",
   justifyContent: "center",
   alignItems: "center",

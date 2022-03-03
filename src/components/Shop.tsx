@@ -9,6 +9,7 @@ import Checkout from "./Checkout";
 import Purchase from "./Purchase";
 import { useState } from "react";
 import { ShoppingCartItem } from "../data";
+import Api from "./Api";
 
 function Shop() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
@@ -51,6 +52,7 @@ function Shop() {
         <Route path="under18" element={<Under18 />}></Route>
         <Route path="Checkout" element={<Checkout />}></Route>
         <Route path="Purchase" element={<Purchase />}></Route>
+        <Route path="Api" element={<Api />}></Route>
       </Routes>
     </BrowserRouter>
   );

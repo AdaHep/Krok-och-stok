@@ -15,7 +15,7 @@ function Cart({ shoppingCart }: Props) {
     <div style={productContainer}>
       <h2>Kundvagn</h2>
 
-      {shoppingCart.length === 0 ? <p>No items in cart.</p> : null}
+      {shoppingCart.length === 0 ? <p>Du har ju glömt att handla!</p> : null}
 
       <div style={productCardContainer}>
         {shoppingCart.map((p, index) => (

@@ -50,13 +50,13 @@ function ProductPageWine({ shoppingCart, onCartChanged }: Props) {
 
   return (
     <div style={productContainer}>
-      <h2>ÖL</h2>
+      <h2>VIN</h2>
       <div style={menuButtons}>
         <Link style={LinkStyle} to="/productPageSpirits">
           SPRIT
         </Link>
         <Link style={LinkStyle} to="/productPageBeer">
-          VIN
+          ÖL
         </Link>
       </div>
 
