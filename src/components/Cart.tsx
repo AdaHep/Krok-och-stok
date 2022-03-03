@@ -1,19 +1,25 @@
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import { mockedProductsBeer, ShoppingCartItem } from "../data";
-import BeerCount from "./BeerCount";
+import { ShoppingCartItem } from "../data";
 
-function Cart() {
-  const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
+interface Props {
+  shoppingCart: ShoppingCartItem[];
+}
+
+function Cart({ shoppingCart }: Props) {
+  const totalPrice = shoppingCart.reduce(
+    (sum, cartItem) => sum + cartItem.price * cartItem.count,
+    0
+  );
   return (
     <div style={productContainer}>
       <h2>Kundvagn</h2>
 
-      {mockedProductsBeer.length === 0 ? <p>No items in cart.</p> : null}
+      {shoppingCart.length === 0 ? <p>No items in cart.</p> : null}
 
       <div style={productCardContainer}>
-        {mockedProductsBeer.map((p) => (
-          <div style={productCard}>
+        {shoppingCart.map((p, index) => (
+          <div key={index} style={productCard}>
             <div style={picturePlaceholder}>
               <p style={productHeadline}>{p.title}</p>
               <img style={productImage} src={p.image} alt="" />
@@ -22,8 +28,8 @@ function Cart() {
             <div style={priceAndCount}>
               <p style={productCartCount}>
                 Antal:
-                {mockedProductsBeer.find((item) => item.title === p.title)
-                  ?.count || 0}
+                {shoppingCart.find((item) => item.title === p.title)?.count ||
+                  0}
               </p>
               <p style={productCartCount}>Totalt {p.count * p.price}:-</p>
             </div>
@@ -31,7 +37,7 @@ function Cart() {
           </div>
         ))}
       </div>
-      <h3>Totalt :- </h3>
+      <h3>Totalt {totalPrice} :- </h3>
       <div style={bottomLinks}>
         <Link style={LinkStyle} to={"/productpagebeer"}>
           Tillbaka
@@ -68,11 +74,12 @@ const productCardContainer: CSSProperties = {
   display: "grid",
   boxSizing: "border-box",
   flexDirection: "column",
-  gridTemplateColumns: "repeat(1, 1fr)",
+  gridTemplateColumns: "repeat(3, 1fr)",
 };
 
 const productCard: CSSProperties = {
-  borderBottom: "1px solid black",
+  margin: "1rem",
+  border: "1px solid black",
   display: "flex",
   flexDirection: "row",
   alignItems: "center",

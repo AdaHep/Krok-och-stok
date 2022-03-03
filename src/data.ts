@@ -13,12 +13,11 @@ import vodka from "./images/vodka.png";
 import gin from "./images/gin.png";
 import jäger from "./images/jäger.png";
 
-
 export interface Product {
   title: string;
   price: number;
   image: string;
-  count: number;
+  count: number; // todo: ta bort
 }
 
 export const mockedProductsBeer: Product[] = [

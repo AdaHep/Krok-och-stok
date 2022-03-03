@@ -15,7 +15,7 @@ function Checkout() {
                 <input
                   style={inputStyle}
                   type="text"
-                  placeholder="Email"
+                  placeholder="seanpaul@dale.com"
                   name="Email Adress"
                 />
               </form>

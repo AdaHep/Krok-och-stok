@@ -2,27 +2,51 @@ import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
 
-export function ProductPageBeer() {
-  const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
+interface Props {
+  shoppingCart: ShoppingCartItem[];
+  onCartChanged: (cart: ShoppingCartItem[]) => void;
+}
+
+function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
   function addToCart(product: Product) {
-    const isItemInCart = shoppingCart.find(
+    const itemInCartIndex = shoppingCart.findIndex(
       (item) => item.title === product.title
     );
 
-    if (isItemInCart) {
-      product.count += 1;
-      console.log(shoppingCart);
+    if (itemInCartIndex !== -1) {
+      const cartProduct = shoppingCart[itemInCartIndex];
+      const updatedProduct = { ...product, count: cartProduct.count + 1 };
+      const copyCart = [...shoppingCart];
+      copyCart.splice(itemInCartIndex, 1, updatedProduct);
+      onCartChanged(copyCart);
     } else {
-      product.count += 1;
-      shoppingCart.push(product);
+      const updatedProduct = { ...product, count: 1 };
+      onCartChanged([...shoppingCart, updatedProduct]);
     }
   }
 
   function removeFromCart(product: Product) {
-    product.count -= 1;
-    shoppingCart.push();
-    console.log(shoppingCart);
+    const itemInCartIndex = shoppingCart.findIndex(
+      (item) => item.title === product.title
+    );
+
+    if (itemInCartIndex !== -1) {
+      const cartProduct = shoppingCart[itemInCartIndex];
+      const updatedProduct = { ...product, count: cartProduct.count - 1 };
+      const copyCart = [...shoppingCart];
+      copyCart.splice(itemInCartIndex, 1, updatedProduct);
+      onCartChanged(copyCart);
+    }
   }
+
+  console.log(shoppingCart);
+  const combinedProductList = mockedProductsBeer.map((product) => {
+    const productInCart = shoppingCart.find(
+      (item) => item.title === product.title
+    );
+    if (productInCart) return productInCart;
+    return { ...product, count: 0 };
+  });
 
   return (
     <div style={productContainer}>
@@ -37,7 +61,7 @@ export function ProductPageBeer() {
       </div>
 
       <div style={productCardContainer}>
-        {mockedProductsBeer.map((p, index) => (
+        {combinedProductList.map((p, index) => (
           <div key={index} style={productCard}>
             <p style={productHeadline}>{p.title}</p>
             <div style={picturePlaceholder}>
@@ -62,10 +86,6 @@ export function ProductPageBeer() {
       </Link>
     </div>
   );
-}
-
-function moveProducts() {
-  return null;
 }
 
 export default ProductPageBeer;
