@@ -29,7 +29,7 @@ function Api() {
         </Link>
       </div>
       <div>
-        <ul>
+        <ul style={listStyle}>
           <h3>Lista på idioter</h3>
           {posts.map((post: { name: string }) => (
             <li key={posts.id}>{post.name}</li>
@@ -73,4 +73,9 @@ const LinkStyle: CSSProperties = {
   color: "white",
   justifyContent: "center",
   alignItems: "center",
+};
+
+const listStyle: CSSProperties = {
+  listStyleType: "none",
+  padding: 0,
 };
