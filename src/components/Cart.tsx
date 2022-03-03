@@ -31,10 +31,15 @@ function Cart() {
           </div>
         ))}
       </div>
-      <h3>Totalt 514:- </h3>
-      <Link style={LinkStyle} to={"/Checkout"}>
-      <button style={payButton}>Betala</button>
-      </Link>
+      <h3>Totalt :- </h3>
+      <div style={bottomLinks}>
+        <Link style={LinkStyle} to={"/productpagebeer"}>
+          Tillbaka
+        </Link>
+        <Link style={LinkStyle} to={"/Checkout"}>
+          Betala
+        </Link>
+      </div>
     </div>
   );
 }
@@ -100,19 +105,19 @@ const picturePlaceholder: CSSProperties = {
   width: "8rem",
 };
 
-const payButton: CSSProperties = {
-  marginBottom: "1rem ",
+const bottomLinks: CSSProperties = {
+  display: "flex",
 };
-
 const LinkStyle: CSSProperties = {
   display: "flex",
   textDecoration: "none",
   height: "3rem",
-  width: "6rem",
+  width: "auto",
   background: "blue",
   borderRadius: "8rem",
+  padding: "0.5rem",
+  margin: "1rem",
   color: "white",
   justifyContent: "center",
   alignItems: "center",
 };
-

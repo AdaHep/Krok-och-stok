@@ -59,7 +59,9 @@ function ProductPageWine() {
           </div>
         ))}
       </div>
-      <button>Lägg till i kundkorg</button>
+      <Link style={LinkStyle} to={"/Cart"}>
+        Lägg till i kundkorg
+      </Link>
     </div>
   );
 }
@@ -131,9 +133,11 @@ const LinkStyle: CSSProperties = {
   display: "flex",
   textDecoration: "none",
   height: "3rem",
-  width: "6rem",
+  width: "10rem",
   background: "blue",
   borderRadius: "8rem",
+  padding: "0.5rem",
+  margin: "1rem",
   color: "white",
   justifyContent: "center",
   alignItems: "center",
