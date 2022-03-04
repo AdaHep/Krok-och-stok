@@ -35,6 +35,7 @@ After the installation is done you need to type `npm start` in the `terminal` fo
 <br>
 
 ## Links
+[Repo](https://github.com/AdaHep/Krok-och-stok.git)
 
 
 
