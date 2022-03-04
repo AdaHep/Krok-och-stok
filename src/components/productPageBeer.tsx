@@ -1,6 +1,7 @@
 import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
+import Errorbounds from "./Errorbounds";
 
 interface Props {
   shoppingCart: ShoppingCartItem[];
@@ -62,14 +63,16 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
           IDIOTER
         </Link>
       </div>
-
+      <Errorbounds>
       <div style={productCardContainer}>
         {combinedProductList.map((p, index) => (
           <div key={index} style={productCard}>
             <p style={productHeadline}>{p.title}</p>
+
             <div style={picturePlaceholder}>
               <img style={productImage} src={p.image} alt="" />
             </div>
+
             <p>Pris: {p.price}:- st</p>
             <div style={productButtons}>
               <button style={addRemoveButton} onClick={() => removeFromCart(p)}>
@@ -84,6 +87,7 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
           </div>
         ))}
       </div>
+      </Errorbounds>
       <Link style={LinkStyle} to={"/Cart"}>
         Lägg till i kundkorg
       </Link>

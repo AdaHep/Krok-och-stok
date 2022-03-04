@@ -1,6 +1,7 @@
 import { useState, CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { mockedProductsWine, Product, ShoppingCartItem } from "../data";
+import Errorbounds from "./Errorbounds";
 
 interface Props {
   shoppingCart: ShoppingCartItem[];
@@ -59,7 +60,7 @@ function ProductPageWine({ shoppingCart, onCartChanged }: Props) {
           ÖL
         </Link>
       </div>
-
+      <Errorbounds>
       <div style={productCardContainer}>
         {combinedProductList.map((p, index) => (
           <div key={index} style={productCard}>
@@ -81,6 +82,7 @@ function ProductPageWine({ shoppingCart, onCartChanged }: Props) {
           </div>
         ))}
       </div>
+      </Errorbounds>
       <Link style={LinkStyle} to={"/Cart"}>
         Lägg till i kundkorg
       </Link>

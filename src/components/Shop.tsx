@@ -11,12 +11,14 @@ import { useState } from "react";
 import { ShoppingCartItem } from "../data";
 import Api from "./Api";
 
+
 function Shop() {
   const [shoppingCart, setShoppingCart] = useState<ShoppingCartItem[]>([]);
 
   return (
     <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<AgeCheck />}></Route>
         <Route
           path="productPageBeer"
@@ -27,6 +29,7 @@ function Shop() {
             />
           }
         ></Route>
+
         <Route
           path="productPageSpirits"
           element={
