@@ -1,12 +1,12 @@
-import Cart from "./Cart";
 import Shop from "./Shop";
 import Errorbounds from "./Errorbounds";
+import "@material-tailwind/react/tailwind.css";
 
 function App() {
   return (
     <div>
       <Errorbounds>
-      <Shop />
+        <Shop />
       </Errorbounds>
     </div>
   );

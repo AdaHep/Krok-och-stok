@@ -2,6 +2,7 @@ import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import { mockedProductsBeer, Product, ShoppingCartItem } from "../data";
 import Errorbounds from "./Errorbounds";
+import "@material-tailwind/react/tailwind.css";
 
 interface Props {
   shoppingCart: ShoppingCartItem[];
@@ -50,8 +51,8 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
   });
 
   return (
-    <div style={productContainer}>
-      <h2>ÖL</h2>
+    <div className="bg-red-400 md:block" style={productContainer}>
+      <h2 className="text-green-400">ÖL</h2>
       <div style={menuButtons}>
         <Link style={LinkStyle} to="/productPageSpirits">
           SPRIT
@@ -64,29 +65,32 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
         </Link>
       </div>
       <Errorbounds>
-      <div style={productCardContainer}>
-        {combinedProductList.map((p, index) => (
-          <div key={index} style={productCard}>
-            <p style={productHeadline}>{p.title}</p>
+        <div style={productCardContainer}>
+          {combinedProductList.map((p, index) => (
+            <div key={index} style={productCard}>
+              <p style={productHeadline}>{p.title}</p>
 
-            <div style={picturePlaceholder}>
-              <img style={productImage} src={p.image} alt="" />
+              <div style={picturePlaceholder}>
+                <img style={productImage} src={p.image} alt="" />
+              </div>
+
+              <p>Pris: {p.price}:- st</p>
+              <div style={productButtons}>
+                <button
+                  style={addRemoveButton}
+                  onClick={() => removeFromCart(p)}
+                >
+                  -
+                </button>
+                <p>{p.count}</p>
+
+                <button style={addRemoveButton} onClick={() => addToCart(p)}>
+                  +
+                </button>
+              </div>
             </div>
-
-            <p>Pris: {p.price}:- st</p>
-            <div style={productButtons}>
-              <button style={addRemoveButton} onClick={() => removeFromCart(p)}>
-                -
-              </button>
-              <p>{p.count}</p>
-
-              <button style={addRemoveButton} onClick={() => addToCart(p)}>
-                +
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </Errorbounds>
       <Link style={LinkStyle} to={"/Cart"}>
         Lägg till i kundkorg
@@ -101,7 +105,7 @@ const productContainer: CSSProperties = {
   display: "flex",
   flexDirection: "column",
   width: "50rem",
-  backgroundColor: "#e6ffff",
+  // backgroundColor: "#e6ffff",
   borderRadius: "5rem",
   color: "black",
   alignItems: "center",

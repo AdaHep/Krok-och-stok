@@ -7,7 +7,7 @@ interface Props {
 }
 
 function Cart({ shoppingCart }: Props) {
-  const [discount, setDiscount] = useState(false)
+  const [discount, setDiscount] = useState(false);
   const totalPrice = shoppingCart.reduce(
     (sum, cartItem) => sum + cartItem.price * cartItem.count,
     0
@@ -15,9 +15,9 @@ function Cart({ shoppingCart }: Props) {
 
   function iWantDiscount() {
     if (!discount) {
-      setDiscount(true)
+      setDiscount(true);
     } else {
-      setDiscount(false)
+      setDiscount(false);
     }
   }
   return (
@@ -57,7 +57,16 @@ function Cart({ shoppingCart }: Props) {
       </div>
       <div>
         {discount && <p>Ingen rabatt kompis!</p>}
-        {!discount && <button style={discountButtonStyle} onClick={iWantDiscount} id="NodiscountBtn" > Vill du ha rabatt?</button>}
+        {!discount && (
+          <button
+            style={discountButtonStyle}
+            onClick={iWantDiscount}
+            id="NodiscountBtn"
+          >
+            {" "}
+            Vill du ha rabatt?
+          </button>
+        )}
       </div>
     </div>
   );
@@ -144,7 +153,7 @@ const LinkStyle: CSSProperties = {
 
 const discountButtonStyle: CSSProperties = {
   color: "red",
-  marginBottom: "1rem"
+  marginBottom: "1rem",
 };
 
 // const NoDiscountText: CSSProperties = {

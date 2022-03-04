@@ -1,13 +1,15 @@
 import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import "@material-tailwind/react/tailwind.css";
 
 function AgeCheck() {
   return (
     <div style={rootStyle}>
       <div style={ageCheckStyle}>
         <h1>Hur gammal är du?</h1>
+        <div className="rounded-lg bg-slate-500"></div>
         <div style={ageButtonsContainer}>
-          <Link style={linkStyle} to={"./productpagebeer"}>
+          <Link className=".bg-teal-600	" to={"./productpagebeer"}>
             <h2>Över 18+</h2>
           </Link>
           <Link style={linkStyle} to={"./under18"}>
@@ -27,6 +29,10 @@ const rootStyle: CSSProperties = {
   alignContent: "center",
 };
 
+const buttons: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+};
 const ageCheckStyle: CSSProperties = {
   width: "50rem",
   height: "100%",
