@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartItem } from "../data";
 
@@ -7,10 +7,19 @@ interface Props {
 }
 
 function Cart({ shoppingCart }: Props) {
+  const [discount, setDiscount] = useState(false)
   const totalPrice = shoppingCart.reduce(
     (sum, cartItem) => sum + cartItem.price * cartItem.count,
     0
   );
+
+  function iWantDiscount() {
+    if (!discount) {
+      setDiscount(true)
+    } else {
+      setDiscount(false)
+    }
+  }
   return (
     <div style={productContainer}>
       <h2>Kundvagn</h2>
@@ -45,6 +54,10 @@ function Cart({ shoppingCart }: Props) {
         <Link style={LinkStyle} to={"/Checkout"}>
           Betala
         </Link>
+      </div>
+      <div>
+        {discount && <p>Ingen rabatt kompis!</p>}
+        {!discount && <button style={discountButtonStyle} onClick={iWantDiscount} id="NodiscountBtn" > Vill du ha rabatt?</button>}
       </div>
     </div>
   );
@@ -119,7 +132,7 @@ const LinkStyle: CSSProperties = {
   display: "flex",
   textDecoration: "none",
   height: "3rem",
-  width: "auto",
+  width: "4rem",
   background: "blue",
   borderRadius: "8rem",
   padding: "0.5rem",
@@ -128,3 +141,12 @@ const LinkStyle: CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
 };
+
+const discountButtonStyle: CSSProperties = {
+  color: "red",
+  marginBottom: "1rem"
+};
+
+// const NoDiscountText: CSSProperties = {
+//   display: "none",
+// };
