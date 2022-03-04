@@ -18,7 +18,7 @@ function Api() {
   }, []);
 
   return (
-    <div style={productContainer}>
+    <div  className="block mx-auto bg-gray-600 rounded-lg" style={productContainer}>
       <h2>API</h2>
       <div style={menuButtons}>
         <Link style={LinkStyle} to="/productPageSpirits">
@@ -44,11 +44,11 @@ export default Api;
 
 const productContainer: CSSProperties = {
   display: "flex",
+  width:"30rem",
   flexDirection: "column",
-  width: "50rem",
-  backgroundColor: "#e6ffff",
+  
   borderRadius: "5rem",
-  color: "black",
+  color: "white",
   alignItems: "center",
   justifyContent: "space-evenly",
   fontSize: "1.2rem",
@@ -66,7 +66,7 @@ const LinkStyle: CSSProperties = {
   textDecoration: "none",
   height: "3rem",
   width: "10rem",
-  background: "blue",
+  background: "lightblue",
   borderRadius: "8rem",
   padding: "0.5rem",
   margin: "1rem",

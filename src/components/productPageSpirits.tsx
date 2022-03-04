@@ -50,9 +50,9 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
   });
 
   return (
-    <div style={productContainer}>
-      <h2>SPRIT</h2>
-      <div style={menuButtons}>
+    <div className="block mx-auto bg-gray-600 rounded-lg">
+      <h2 className="text-center" >SPRIT</h2>
+      <div className="mx-auto block" style={menuButtons}>
         <Link style={LinkStyle} to="/productPageBeer">
           ÖL
         </Link>
@@ -61,7 +61,7 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
         </Link>
       </div>
       <Errorbounds>
-      <div style={productCardContainer}>
+      <div className="grid gap-1 grid-row-1 md:grid md:gap-3 md:grid-cols-3">
         {combinedProductList.map((p, index) => (
           <div key={index} style={productCard}>
             <p style={productHeadline}>{p.title}</p>
@@ -83,7 +83,7 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
         ))}
       </div>
       </Errorbounds>
-      <Link style={LinkStyle} to={"/Cart"}>
+      <Link className="mx-auto block" style={LinkStyle} to={"/Cart"}>
         Lägg till i kundkorg
       </Link>
     </div>
@@ -92,30 +92,13 @@ function ProductPageBeer({ shoppingCart, onCartChanged }: Props) {
 
 export default ProductPageBeer;
 
-const productContainer: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  width: "50rem",
-  backgroundColor: "#e6ffff",
-  borderRadius: "5rem",
-  color: "black",
-  alignItems: "center",
-  justifyContent: "space-evenly",
-  fontSize: "1.2rem",
-  textAlign: "center",
-};
 
 const productHeadline: CSSProperties = {
   fontSize: "1.2rem",
   fontWeight: "bold",
 };
 
-const productCardContainer: CSSProperties = {
-  display: "grid",
-  boxSizing: "border-box",
-  flexDirection: "row",
-  gridTemplateColumns: "repeat(3, 1fr)",
-};
+
 
 const menuButtons: CSSProperties = {
   display: "flex",
@@ -140,6 +123,7 @@ const productImage: CSSProperties = {
 const productButtons: CSSProperties = {
   display: "flex",
   justifyContent: "center",
+
 };
 
 const addRemoveButton: CSSProperties = {
@@ -147,6 +131,7 @@ const addRemoveButton: CSSProperties = {
   margin: "1rem",
   border: "none",
   borderRadius: "1rem",
+  backgroundColor: "darkgray",
 };
 
 const picturePlaceholder: CSSProperties = {
@@ -155,15 +140,12 @@ const picturePlaceholder: CSSProperties = {
 };
 
 const LinkStyle: CSSProperties = {
-  display: "flex",
   textDecoration: "none",
   height: "3rem",
   width: "10rem",
-  background: "blue",
+  background: "lightblue",
   borderRadius: "8rem",
   padding: "0.5rem",
-  margin: "1rem",
   color: "white",
-  justifyContent: "center",
-  alignItems: "center",
+  textAlign:"center",
 };

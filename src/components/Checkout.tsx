@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 function Checkout() {
   return (
-    <div>
-      <div style={rootStyle}>
+    <div >
+      <div className="bg-gray-600" style={rootStyle}>
         <div style={header}>Checkout</div>
 
-        <div style={inputFields}>
+        <div>
           <div style={column}>
             <div style={formStyle}>
               <form>
@@ -95,6 +95,7 @@ const row: CSSProperties = {
 const column: CSSProperties = {
   display: "flex",
   flexDirection: "column",
+  
 };
 
 const inputStyle: CSSProperties = {
@@ -107,7 +108,7 @@ const inputStyle: CSSProperties = {
 };
 
 const formTextStyle: CSSProperties = {
-  color: "black",
+  color: "lightgray",
   fontSize: "1.5rem",
   textAlign: "center",
   margin: 0,
@@ -122,6 +123,7 @@ const formStyle: CSSProperties = {
   height: "auto",
   width: "auto",
   borderRadius: "1rem",
+  
 };
 
 const inputFields: CSSProperties = {
@@ -137,21 +139,22 @@ const buttonBox: CSSProperties = {
 
 const rootStyle: CSSProperties = {
   display: "flex",
+  justifyContent: "space-evenly",
   flexDirection: "column",
-  width: "50rem",
+  width: "60vw",
   height: "50rem",
-  backgroundColor: "#e6ffff",
+
   borderRadius: "5rem",
   color: "black",
   alignItems: "center",
-  justifyContent: "space-evenly",
+
   fontSize: "1.2rem",
   textAlign: "center",
 };
 
 const header: CSSProperties = {
   fontSize: "34px",
-  color: "black",
+  color: "white",
 };
 
 const LinkStyle: CSSProperties = {
@@ -159,7 +162,7 @@ const LinkStyle: CSSProperties = {
   textDecoration: "none",
   height: "3rem",
   width: "auto",
-  background: "blue",
+  background: "lightblue",
   borderRadius: "8rem",
   padding: "0.5rem",
   color: "white",

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 function Purchase() {
   return (
     <div>
-      <div style={rootStyle}>
+      <div className="bg-gray-600" style={rootStyle}>
         <h1 style={header}>Checkout</h1>
-        <h2>Tack för ditt köp</h2>
+        <h2 className="text-5xl">Tack för ditt köp!</h2>
         <Link style={LinkStyle} to="/ProductPageBeer">
           <div>Go to the home page</div>
         </Link>
@@ -28,11 +28,10 @@ const column: CSSProperties = {
 const rootStyle: CSSProperties = {
   display: "flex",
   flexDirection: "column",
-  width: "50rem",
-  height: "50rem",
-  backgroundColor: "#e6ffff",
+  width: "60vw",
+  height: "50vw",
   borderRadius: "5rem",
-  color: "black",
+  color: "white",
   alignItems: "center",
   justifyContent: "space-evenly",
   fontSize: "1.2rem",
@@ -41,15 +40,15 @@ const rootStyle: CSSProperties = {
 
 const header: CSSProperties = {
   fontSize: "34px",
-  color: "black",
+  
 };
 
 const LinkStyle: CSSProperties = {
   display: "flex",
   textDecoration: "none",
-  height: "3rem",
+  height: "6vh",
   width: "auto",
-  background: "blue",
+  background: "lightblue",
   borderRadius: "8rem",
   padding: "0.5rem",
   color: "white",

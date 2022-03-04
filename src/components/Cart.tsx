@@ -21,12 +21,12 @@ function Cart({ shoppingCart }: Props) {
     }
   }
   return (
-    <div style={productContainer}>
-      <h2>Kundvagn</h2>
+    <div className="block mx-auto bg-gray-600 rounded-lg">
+      <h2 className="text-center" >Kundvagn</h2>
 
       {shoppingCart.length === 0 ? <p>Du har ju glömt att handla!</p> : null}
 
-      <div style={productCardContainer}>
+      <div className="grid gap-1 grid-cols-2 md:grid md:gap-3 md:grid-cols-3" >
         {shoppingCart.map((p, index) => (
           <div key={index} style={productCard}>
             <div style={picturePlaceholder}>
@@ -40,22 +40,22 @@ function Cart({ shoppingCart }: Props) {
                 {shoppingCart.find((item) => item.title === p.title)?.count ||
                   0}
               </p>
-              <p style={productCartCount}>Totalt {p.count * p.price}:-</p>
+              <p > Totalt {p.count * p.price}:-</p>
             </div>
             <div style={productButtons}></div>
           </div>
         ))}
       </div>
-      <h3>Totalt {totalPrice} :- </h3>
-      <div style={bottomLinks}>
-        <Link style={LinkStyle} to={"/productpagebeer"}>
+      <h3 className="text-center" >Totalt {totalPrice} :- </h3>
+      <div className="flex">
+        <Link className="mx-auto" style={LinkStyle} to={"/productpagebeer"}>
           Tillbaka
         </Link>
-        <Link style={LinkStyle} to={"/Checkout"}>
+        <Link  className="mx-auto" style={LinkStyle} to={"/Checkout"}>
           Betala
         </Link>
       </div>
-      <div>
+      <div className="text-center">
         {discount && <p>Ingen rabatt kompis!</p>}
         {!discount && (
           <button
@@ -74,19 +74,6 @@ function Cart({ shoppingCart }: Props) {
 
 export default Cart;
 
-const productContainer: CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  width: "50rem",
-  backgroundColor: "#e6ffff",
-  borderRadius: "5rem",
-  color: "black",
-  alignItems: "center",
-  justifyContent: "space-evenly",
-  fontSize: "1.2rem",
-  textAlign: "center",
-};
-
 const productHeadline: CSSProperties = {
   fontSize: ".8rem",
   fontWeight: "bold",
@@ -100,7 +87,7 @@ const productCardContainer: CSSProperties = {
 };
 
 const productCard: CSSProperties = {
-  margin: "1rem",
+  margin: "2rem",
   border: "1px solid black",
   display: "flex",
   flexDirection: "row",
@@ -138,21 +125,19 @@ const bottomLinks: CSSProperties = {
   display: "flex",
 };
 const LinkStyle: CSSProperties = {
-  display: "flex",
+  display:"flex",
   textDecoration: "none",
   height: "3rem",
-  width: "4rem",
-  background: "blue",
+  width: "5rem",
+  background: "lightblue",
   borderRadius: "8rem",
   padding: "0.5rem",
-  margin: "1rem",
   color: "white",
-  justifyContent: "center",
-  alignItems: "center",
+  textAlign:"center"
 };
 
 const discountButtonStyle: CSSProperties = {
-  color: "red",
+  color: "lightgreen",
   marginBottom: "1rem",
 };
 
